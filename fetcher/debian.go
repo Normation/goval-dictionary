@@ -35,12 +35,14 @@ func debianName(major string) string {
 		return config.Debian9
 	case "10":
 		return config.Debian10
+	case "11":
+		return config.Debian11
 	default:
 		return "unknown"
 	}
 }
 
-// FetchDebianFiles fetch OVAL from RedHat
+// FetchDebianFiles fetch OVAL from Debian 
 func FetchDebianFiles(versions []string) ([]FetchResult, error) {
 	reqs := newDebianFetchRequests(versions)
 	if len(reqs) == 0 {
