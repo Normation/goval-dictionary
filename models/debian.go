@@ -19,6 +19,7 @@ func ConvertDebianToModel(root *oval.Root) (defs []Definition) {
 		if strings.Contains(ovaldef.Description, "** REJECT **") {
 			continue
 		}
+		cveID := ovaldef.Title
 		rs := []Reference{}
 		for _, r := range ovaldef.References {
 			rs = append(rs, Reference{
@@ -26,6 +27,8 @@ func ConvertDebianToModel(root *oval.Root) (defs []Definition) {
 				RefID:  r.RefID,
 				RefURL: r.RefURL,
 			})
+			cveID = r.RefID
+
 		}
 
 		for _, distPack := range collectDebianPacks(ovaldef.Criteria) {
@@ -37,7 +40,7 @@ func ConvertDebianToModel(root *oval.Root) (defs []Definition) {
 				Title:        ovaldef.Title,
 				Description:  ovaldef.Description,
 				Debian: Debian{
-					CveID:    ovaldef.Title,
+					CveID:    cveID,
 					MoreInfo: ovaldef.Debian.MoreInfo,
 					Date:     t,
 				},
