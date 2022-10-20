@@ -36,6 +36,9 @@ const (
 	// Ubuntu20 is  Focal Fossa
 	Ubuntu20 = "focal"
 
+	// Ubuntu20 is  Jammy Jellyfish
+	Ubuntu22 = "jammy"
+
 	// Debian7 is wheezy
 	Debian7 = "wheezy"
 

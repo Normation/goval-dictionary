@@ -8,7 +8,7 @@ import (
 )
 
 func newUbuntuFetchRequests(target []string) (reqs []fetchRequest) {
-	const t = "https://people.canonical.com/~ubuntu-security/oval/com.ubuntu.%s.cve.oval.xml.bz2"
+	const t = "https://security-metadata.canonical.com/oval/com.ubuntu.%s.cve.oval.xml.bz2"
 	for _, v := range target {
 		var name string
 		if name = ubuntuName(v); name == "unknown" {
@@ -45,6 +45,8 @@ func ubuntuName(major string) string {
 		return config.Ubuntu19
 	case "20":
 		return config.Ubuntu20
+	case "22":
+		return config.Ubuntu22
 	default:
 		return "unknown"
 	}
