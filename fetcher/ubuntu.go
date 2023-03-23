@@ -8,7 +8,7 @@ import (
 )
 
 func newUbuntuFetchRequests(target []string) (reqs []fetchRequest) {
-	const t = "https://security-metadata.canonical.com/oval/com.ubuntu.%s.usn.oval.xml.bz2"
+	const t = "https://security-metadata.canonical.com/oval/com.ubuntu.%s.cve.oval.xml.bz2"
 	for _, v := range target {
 		var name string
 		if name = ubuntuName(v); name == "unknown" {
