@@ -9,7 +9,7 @@ import (
 
 // https://www.debian.org/security/oval/
 func newDebianFetchRequests(target []string) (reqs []fetchRequest) {
-	const t = "https://www.debian.org/security/oval/oval-definitions-%s.xml"
+	const t = "https://www.debian.org/security/oval/oval-definitions-%s.xml.bz2"
 	for _, v := range target {
 		var name string
 		if name = debianName(v); name == "unknown" {
@@ -20,6 +20,7 @@ func newDebianFetchRequests(target []string) (reqs []fetchRequest) {
 			target:       v,
 			url:          fmt.Sprintf(t, name),
 			concurrently: true,
+			bzip2:        true,
 		})
 	}
 	return
